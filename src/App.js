@@ -1,37 +1,26 @@
 import {useState} from "react";
 
 const App = () => {
-    const [texts, setTexts] = useState({
-        text1: "",
-        text2: ""
-    })
+    const [text, setText] = useState("")
     const onChangeText = e => {
-        const {name, value} = e.target
-        setTexts(prev => ({...prev, [name]: value}))
+        const {value} = e.target
+        setText(value)
     }
     return (
         <div className="container">
             <div className="row">
-                <textarea value={texts.text1}
+                <textarea value={text}
                           onChange={onChangeText}
                           className="text"
                           rows="10"
                           name="text1"
-                          placeholder="Левая часть"/>
-                <textarea value={texts.text2}
-                          name="text2"
-                          onChange={onChangeText}
-                          className="text"
-                          rows="10"
-                          placeholder="Правая часть"/>
+                          placeholder="Введи текст"/>
+
             </div>
             <div className="row">
                 <div className="notebook">
                     <pre className="block-1">
-                        {texts.text1}
-                    </pre>
-                    <pre className="block-2">
-                       {texts.text2}
+                        {text}
                     </pre>
                 </div>
             </div>
